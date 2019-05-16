@@ -24,6 +24,9 @@
         "hide-udp": "false",
         "use-keyword-filter": "false" 
     },
+    "Proxy": [
+        "🚀 Direct = direct"
+    ],
     "ProxyGroup": [
         {
             "name": "🍃 PROXY",
