@@ -80,6 +80,6 @@
         }
     ],
     "Rule": {
-        "source": ""
+        "source": "https://raw.githubusercontent.com/Meopas/rule/master/SurgeRule.conf"
     }
 }
