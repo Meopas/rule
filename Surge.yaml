@@ -1,0 +1,63 @@
+---
+General:
+  loglevel: notify
+  dns-server: system, 117.50.10.10, 119.29.29.29, 223.6.6.6, 119.29.219.20
+  skip-proxy: 127.0.0.1, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, 100.64.0.0/10,
+    17.0.0.0/8, localhost, *.local, *.crashlytics.com
+  external-controller-access: MixChina@0.0.0.0:8233
+  allow-wifi-access: 'true'
+  enhanced-mode-by-rule: 'false'
+  exclude-simple-hostnames: 'true'
+  show-error-page-for-reject: 'true'
+  ipv6: 'true'
+  replica: 'false'
+  http-listen: 0.0.0.0:8234
+  socks5-listen: 0.0.0.0:8235
+  wifi-access-http-port: '6152'
+  wifi-access-socks5-port: '6153'
+  internet-test-url: http://baidu.com
+  proxy-test-url: http://www.qualcomm.cn/generate_204
+  test-timeout: '3'
+Replica:
+  hide-apple-request: 'true'
+  hide-crashlytics-request: 'true'
+  hide-udp: 'false'
+  use-keyword-filter: 'false'
+Proxy:
+- "\U0001F680 Direct = direct"
+ProxyGroup:
+- name: "\U0001F343 PROXY"
+  type: select
+  content:
+    text1: "\U0001F3C3 Auto"
+    regex: "/.*/i"
+- name: "\U0001F30D ForeignMedia"
+  type: select
+  content:
+    text1: "\U0001F343 PROXY"
+    regex: "/.*/i"
+- name: "\U0001F1E8\U0001F1F3 DomesticMedia"
+  type: select
+  content:
+    text1: "\U0001F680 Direct, \U0001F343 PROXY"
+- name: "\U0001F34E Apple"
+  type: select
+  content:
+    text1: "\U0001F680 Direct, \U0001F343 PROXY"
+- name: "\U0001F3C3 Auto"
+  type: url-test
+  content:
+    regex: "/.*/i"
+  url: http://www.qualcomm.cn/generate_204
+  interval: '3600'
+- name: "☁️ Final"
+  type: select
+  content:
+    text1: "\U0001F343 PROXY, \U0001F680 Direct"
+- name: "\U0001F6AB Hijacking"
+  type: select
+  content:
+    text1: DIRECT , REJECT-TINYGIF
+Rule:
+  source: https://raw.githubusercontent.com/Meopas/rule/master/SurgeRule.conf
+
